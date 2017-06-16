@@ -3,12 +3,10 @@
 class Map
 {
 public:
-	Player myPlayer;
 	Player::position jew;
 	char **map;
 	int filas, columnas;
-	int dif;
-	Map();
+	Map(int dif);
 	~Map();
 	void printMap();
 };

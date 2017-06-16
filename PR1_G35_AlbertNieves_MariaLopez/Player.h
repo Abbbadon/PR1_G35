@@ -1,5 +1,5 @@
 #pragma once
-#include <map>
+#include "Map.h"
 
 class Player
 {
@@ -14,10 +14,7 @@ public:
 	position s = { 0, -1 };
 	position d = { 1, 0 };
 
-	
-	
-
-	Player();
+	Player(Map &myMap);
 	~Player();
 };
 
