@@ -3,11 +3,13 @@
 #include "Player.h"
 #include "Input.hh"
 #include <ctime>
+#include <Windows.h>
 
 
 int main()
 {
-	system("mode 650");
+	//system("mode 650");
+	::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
 	srand(time(nullptr));
 
 	char dif;
