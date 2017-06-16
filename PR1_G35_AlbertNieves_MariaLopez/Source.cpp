@@ -7,6 +7,7 @@
 
 int main()
 {
+	system("mode 650");
 	srand(time(nullptr));
 
 	char dif;
@@ -29,7 +30,7 @@ int main()
 	Player myPlayer(myMap);
 	myMap.printMap();
 
-	while (myPlayer.x != myMap.jewX && myPlayer.y != myMap.jewY)
+	while (myPlayer.x != myMap.jewX || myPlayer.y != myMap.jewY)
 	{
 		key = enti::getInputKey();
 		if (key != enti::InputKey::NONE)
@@ -39,6 +40,8 @@ int main()
 			myMap.printMap();
 		}
 	}
+	system("cls");
+	std::cout << "You won!";
 
 	return 0;
 }

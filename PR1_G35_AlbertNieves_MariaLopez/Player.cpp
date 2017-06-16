@@ -5,6 +5,7 @@
 
 Player::Player(Map &map): map(map), x{ 0 }, y{ 0 }
 {
+	map.map[x][y] = '@';
 	endgame = false;
 }
 
