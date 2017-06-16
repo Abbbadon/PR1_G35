@@ -1,15 +1,22 @@
-#include "Map.h"
-#include "Player.h"
-#include "Header.h"
 #include <iostream>
+#include "Map.h"
+#include "Header.h"
 
+
+position jew;
 Map::Map(int dif)
 {
+	
 	filas = (rand() % 25 + 25)/dif - ((rand() % 25 + 25) % dif);
 	columnas = (rand() % 25 + 25) / dif - ((rand() % 25 + 25) % dif);
 
 	jew.x = rand() % filas;
 	jew.y = rand() % columnas;
+	while (jew.x == 0 && jew.y == 0)
+	{
+		jew.x = rand() % filas;
+		jew.y = rand() % columnas;
+	}
 
 	map = new char *[filas];
 	for (int i = 0; i < filas; i++)
@@ -45,4 +52,9 @@ void Map::printMap()
 
 Map::~Map()
 {
+	for (int i = 0; i < filas; i++)
+	{
+		delete[]map[i];
+	}
+	delete[]map;
 }

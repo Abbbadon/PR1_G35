@@ -1,5 +1,5 @@
 #pragma once
-#include "Player.h"
+#include "Header.h"
 class Map
 {
 public:
@@ -7,7 +7,8 @@ public:
 	char **map;
 	int filas, columnas;
 	Map(int dif);
-	~Map();
 	void printMap();
+	~Map();
+	
 };
 
