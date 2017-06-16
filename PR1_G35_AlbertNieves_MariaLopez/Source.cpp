@@ -1,10 +1,10 @@
 #include "Map.h"
 #include "Player.h"
+#include "Header.h"
 #include <iostream>
 
 int main()
 {
-	char dif;
 	std::cout << "Please choose difficulty by pressing the number value." << std::endl << "The options are:" << std::endl << std::endl << "1 - Easy" << std::endl << "2 - Medium" << std::endl << "3 - Hard" << std::endl;
 	std::cin >> dif;
 	while (dif != '1' && dif != '2' && dif != '3')
@@ -15,7 +15,7 @@ int main()
 	}
 	dif = static_cast<int>(dif) - 48;
 	Map myMap(dif);
-	Player myPlayer();
+	Player myPlayer;
 	myMap.printMap();
 	return 0;
 }

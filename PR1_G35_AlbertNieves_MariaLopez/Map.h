@@ -3,7 +3,7 @@
 class Map
 {
 public:
-	Player::position jew;
+	position jew;
 	char **map;
 	int filas, columnas;
 	Map(int dif);

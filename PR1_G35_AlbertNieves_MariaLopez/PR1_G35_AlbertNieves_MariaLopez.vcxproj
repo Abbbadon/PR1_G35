@@ -151,6 +151,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header.h" />
     <ClInclude Include="Input.hh" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />

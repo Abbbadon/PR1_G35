@@ -1,12 +1,13 @@
 #include "Player.h"
 #include "Map.h"
+#include "Header.h"
 
 
 
-Player::Player(Map &myMap)
+Player::Player()
 {
-	player.x = myMap.columnas - 1;
-	player.y = myMap.filas - 1;
+	player.x = 0;
+	player.y = 0;
 }
 
 void movement() 
