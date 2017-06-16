@@ -1,21 +1,19 @@
 #include <iostream>
 #include "Map.h"
-#include "Header.h"
 
 
-position jew;
 Map::Map(int dif)
 {
 	
 	filas = (rand() % 25 + 25)/dif - ((rand() % 25 + 25) % dif);
 	columnas = (rand() % 25 + 25) / dif - ((rand() % 25 + 25) % dif);
 
-	jew.x = rand() % filas;
-	jew.y = rand() % columnas;
-	while (jew.x == 0 && jew.y == 0)
+	jewY= rand() % filas;
+	jewX = rand() % columnas;
+	while (jewY == 0 && jewX == 0)
 	{
-		jew.x = rand() % filas;
-		jew.y = rand() % columnas;
+		jewY = rand() % filas;
+		jewX = rand() % columnas;
 	}
 
 	map = new char *[filas];
@@ -24,7 +22,7 @@ Map::Map(int dif)
 		map[i] = new char[columnas];
 		for (int j = 0; j < columnas; j++)
 		{
-			if (i == jew.x && j == jew.y) 
+			if (i == jewX && j == jewY) 
 			{
 				map[i][j] = '$';
 			}			

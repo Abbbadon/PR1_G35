@@ -1,9 +1,8 @@
 #pragma once
-#include "Header.h"
 class Map
 {
 public:
-	position jew;
+	int jewX, jewY;
 	char **map;
 	int filas, columnas;
 	Map(int dif);
