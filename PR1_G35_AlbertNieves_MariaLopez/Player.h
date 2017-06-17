@@ -11,7 +11,7 @@ public:
 	Map &map;
 	
 
-	Player::Player(Map &myMap);
+	Player::Player(Map &map);
 	~Player();
 	void movement(enti::InputKey key);
 };
