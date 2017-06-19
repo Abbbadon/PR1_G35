@@ -11,12 +11,12 @@ EnemyManager::EnemyManager(int dif, Map &myMap)
 	for (int i = 0; i < size; i++) 
 	{
 		int j;
-		enemies[i] = new int[2];
+		enemies[i] = new int[rand()%myMap.columnas];
 		for (j = 0; j < 2; j++) 
 		{
 			enemies[i][j] = rand() % myMap.filas;
 		}
-		myMap.map[i][j] = '#';
+		//myMap.map[i][j] = '#';
 	}
 }
 
@@ -26,7 +26,7 @@ void EnemyManager::MoveEnemies(Map &myMap)
 	{
 		myMap.map[enemies[i][0]][enemies[i][1]] = '.';
 		if (int j = rand() % 100 > 50) 
-		{			
+		{		
 			enemies[i][rand() % 1]++;
 			myMap.map[enemies[i][0]][enemies[i][1]] = '#';
 		}

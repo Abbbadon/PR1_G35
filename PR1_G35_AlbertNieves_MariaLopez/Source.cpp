@@ -2,6 +2,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "Input.hh"
+#include "EnemyManager.h"
 #include <ctime>
 #include <Windows.h>
 
@@ -30,6 +31,7 @@ int main()
 	
 	Map myMap(dif);
 	Player myPlayer(myMap);
+	EnemyManager enemies(dif, myMap);
 	myMap.printMap();
 
 	while (myPlayer.x != myMap.jewX || myPlayer.y != myMap.jewY)
@@ -39,6 +41,7 @@ int main()
 		{
 			system("cls");
 			myPlayer.movement(key);
+			enemies.MoveEnemies(myMap);
 			myMap.printMap();
 		}
 	}
