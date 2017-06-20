@@ -10,7 +10,7 @@
 
 int main()
 {
-	//::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
+	::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
 	srand(time(nullptr));
 
 	char dif;
@@ -35,7 +35,7 @@ int main()
 	EnemyManager enemies(dif, myMap);
 	myMap.printMap();
 	
-	while (!myPlayer.endgame || !win)
+	while (!myPlayer.endgame && !win)
 	{
 		key = enti::getInputKey();
 		if (key != enti::InputKey::NONE)
@@ -44,7 +44,10 @@ int main()
 			myPlayer.movement(key);
 			enemies.MoveEnemies(myMap, myPlayer);
 			myMap.printMap();
-			win = (myPlayer.x == myMap.jewX && myPlayer.y == myMap.jewY);
+			if (myPlayer.x == myMap.jewX && myPlayer.y == myMap.jewY)
+			{
+				win = true;
+			}
 		}
 	}
 	system("cls");
