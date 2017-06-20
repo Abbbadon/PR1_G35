@@ -55,7 +55,6 @@ void Player::movement(enti::InputKey key)
 	}
 }
 
-
 Player::~Player()
 {
 }
