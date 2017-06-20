@@ -10,7 +10,8 @@
 
 int main()
 {
-	//::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
+	::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
+
 	srand(time(nullptr));
 
 	char dif;
@@ -59,6 +60,9 @@ int main()
 	{
 		std::cout << "You lost!";
 	}
-
+	key = enti::getInputKey();
+	while (key != enti::InputKey::ENTER || key != enti::InputKey::ESC) {
+		key = enti::getInputKey();
+	}
 	return 0;
 }

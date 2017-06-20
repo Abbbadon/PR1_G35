@@ -11,8 +11,6 @@ Player::Player(Map &map): map(map), x{ 0 }, y{ 0 }
 
 void Player::movement(enti::InputKey key)
 {
-	map.map[x][y] = '@';
-
 	switch (key)
 	{
 	case enti::InputKey::NONE:
