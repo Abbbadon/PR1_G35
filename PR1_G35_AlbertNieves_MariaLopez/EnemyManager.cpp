@@ -24,19 +24,19 @@ void EnemyManager::MoveEnemies(Map &myMap, Player &myPlayer)
 		switch (movement)
 		{
 		case 0:
-			if (!myMap.IsOutOfLimits(enemies[i]->x + 1, enemies[i]->y) || !(enemies[i]->x + 1 == myMap.jewX && enemies[i]->y == myMap.jewY))
+			if (/*!myMap.IsOutOfLimits(enemies[i]->x + 1, enemies[i]->y)*/ enemies[i]->x < myMap.filas - 1 && !(enemies[i]->x + 1 == myMap.jewX && enemies[i]->y == myMap.jewY))
 			enemies[i]->x++;
 			break;
 		case 1:
-			if (!myMap.IsOutOfLimits(enemies[i]->x - 1, enemies[i]->y) || !(enemies[i]->x - 1 == myMap.jewX && enemies[i]->y == myMap.jewY))
+			if (/*!myMap.IsOutOfLimits(enemies[i]->x - 1, enemies[i]->y)*/ enemies[i]->x > 0 && !(enemies[i]->x - 1 == myMap.jewX && enemies[i]->y == myMap.jewY))
 			enemies[i]->x--;
 			break;
 		case 2:
-			if (!myMap.IsOutOfLimits(enemies[i]->x, enemies[i]->y+1) || !(enemies[i]->x == myMap.jewX && enemies[i]->y + 1 == myMap.jewY))
+			if (/*!myMap.IsOutOfLimits(enemies[i]->x, enemies[i]->y+1)*/ enemies[i]->y < myMap.columnas - 1 && !(enemies[i]->x == myMap.jewX && enemies[i]->y + 1 == myMap.jewY))
 			enemies[i]->y++;
 			break;
 		case 3:
-			if (!myMap.IsOutOfLimits(enemies[i]->x, enemies[i]->y-1) || !(enemies[i]->x == myMap.jewX && enemies[i]->y - 1 == myMap.jewY))
+			if (/*!myMap.IsOutOfLimits(enemies[i]->x, enemies[i]->y-1) */ enemies[i]-> y > 0 && !(enemies[i]->x == myMap.jewX && enemies[i]->y - 1 == myMap.jewY))
 			enemies[i]->y--;
 			break;
 		}

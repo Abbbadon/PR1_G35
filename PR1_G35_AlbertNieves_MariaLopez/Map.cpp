@@ -11,8 +11,8 @@ Map::Map(int dif)
 	jewY = rand() % columnas;
 	while (jewY == 0 && jewX == 0)
 	{
-		jewY = rand() % filas;
-		jewX = rand() % columnas;
+		jewX = rand() % filas;
+		jewY = rand() % columnas;
 	}
 
 	map = new char *[filas];
@@ -48,7 +48,7 @@ void Map::printMap()
 
 bool Map::IsOutOfLimits(int x, int y)
 {
-	return x >= filas || x < 0 || y >= columnas || y < 0;
+	return x > filas || x < 0 || y > columnas || y < 0;
 }
 
 
