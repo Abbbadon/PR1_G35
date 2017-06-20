@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Map.h"
 
-
 Map::Map(int dif)
 {
 	
@@ -45,6 +44,11 @@ void Map::printMap()
 		}
 		std::cout << std::endl;
 	}
+}
+
+bool Map::IsOutOfLimits(int x, int y)
+{
+	return x >= columnas || x < 0 || y >= filas || y < 0;
 }
 
 

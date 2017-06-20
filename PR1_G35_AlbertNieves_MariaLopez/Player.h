@@ -7,7 +7,7 @@ class Player
 
 public:	
 	bool endgame;
-	int x, y, dif;
+	int x, y;
 	Map &map;
 	
 

@@ -1,41 +1,48 @@
 #include "EnemyManager.h"
 #include "Map.h"
+#include "Enemy.h"
 #include <iostream>
-
-
 
 EnemyManager::EnemyManager(int dif, Map &myMap) 
 {
 	size = (rand() % 5 + 10) - dif;
-	enemies = new int *[size];
+	enemies = new Enemy *[size];
+
 	for (int i = 0; i < size; i++) 
 	{
-		int j;
-		enemies[i] = new int[rand()%myMap.columnas];
-		for (j = 0; j < 2; j++) 
-		{
-			enemies[i][j] = rand() % myMap.filas;
-		}
-		//myMap.map[i][j] = '#';
+		enemies[i] = new Enemy(myMap);
+		myMap.map[enemies[i]->x][enemies[i]->y] = '#';
 	}
 }
 
-void EnemyManager::MoveEnemies(Map &myMap) 
+void EnemyManager::MoveEnemies(Map &myMap, Player &myPlayer) 
 {
-	for (int i = 0; i < size; i++) 
+	for (int i = 0; i < size; i++)
 	{
-		myMap.map[enemies[i][0]][enemies[i][1]] = '.';
-		if (int j = rand() % 100 > 50) 
-		{		
-			enemies[i][rand() % 1]++;
-			myMap.map[enemies[i][0]][enemies[i][1]] = '#';
-		}
-		else 
+		int movement = rand() % 4;
+		myMap.map[enemies[i]->x][enemies[i]->y] = '.';
+		switch (movement)
 		{
-			enemies[i][rand() % 1]--;
-			myMap.map[enemies[i][0]][enemies[i][1]] = '#';
-		}	
-	}	
+		case 0:
+			if (!myMap.IsOutOfLimits(enemies[i]->x + 1, enemies[i]->y))
+			enemies[i]->x++;
+			break;
+		case 1:
+			if (!myMap.IsOutOfLimits(enemies[i]->x - 1, enemies[i]->y))
+			enemies[i]->x--;
+			break;
+		case 2:
+			if (!myMap.IsOutOfLimits(enemies[i]->x, enemies[i]->y+1))
+			enemies[i]->y++;
+			break;
+		case 3:
+			if (!myMap.IsOutOfLimits(enemies[i]->x, enemies[i]->y-1))
+			enemies[i]->y--;
+			break;
+		}
+		myMap.map[enemies[i]->x][enemies[i]->y] = '#';
+		myPlayer.endgame = (myPlayer.x == enemies[i]->x && myPlayer.y == enemies[i]->y); 
+	}
 }
 
 

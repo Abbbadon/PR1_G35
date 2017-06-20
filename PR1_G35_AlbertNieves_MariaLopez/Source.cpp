@@ -3,18 +3,19 @@
 #include "Player.h"
 #include "Input.hh"
 #include "EnemyManager.h"
+#include "Enemy.h"
 #include <ctime>
 #include <Windows.h>
 
 
 int main()
 {
-	//system("mode 650");
-	::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
+	//::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
 	srand(time(nullptr));
 
 	char dif;
-	
+	bool win = false;
+
 	enti::InputKey key;
 
 	std::cout << "Please choose difficulty by pressing the number value." << std::endl << "The options are:" << std::endl << std::endl << "1 - Easy" << std::endl << "2 - Medium" << std::endl << "3 - Hard" << std::endl;
@@ -33,20 +34,28 @@ int main()
 	Player myPlayer(myMap);
 	EnemyManager enemies(dif, myMap);
 	myMap.printMap();
-
-	while (myPlayer.x != myMap.jewX || myPlayer.y != myMap.jewY)
+	
+	while (!myPlayer.endgame || !win)
 	{
 		key = enti::getInputKey();
 		if (key != enti::InputKey::NONE)
 		{
 			system("cls");
 			myPlayer.movement(key);
-			enemies.MoveEnemies(myMap);
+			enemies.MoveEnemies(myMap, myPlayer);
 			myMap.printMap();
+			win = (myPlayer.x == myMap.jewX && myPlayer.y == myMap.jewY);
 		}
 	}
 	system("cls");
-	std::cout << "You won!";
+	if (win)
+	{
+		std::cout << "You won!";
+	}
+	else
+	{
+		std::cout << "You lost!";
+	}
 
 	return 0;
 }

@@ -49,8 +49,6 @@ void Player::movement(enti::InputKey key)
 			map.map[x][y] = '@';
 		}
 		break;
-	case enti::InputKey::ENTER:
-		break;
 	case enti::InputKey::ESC:
 		endgame = true;
 		break;

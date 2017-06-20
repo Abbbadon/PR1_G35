@@ -1,12 +1,13 @@
 #pragma once
 #include "Map.h"
+#include "Enemy.h"
 class EnemyManager
 {
 public:
 	int size;
-	int **enemies;
+	Enemy **enemies;
 
-	void EnemyManager::MoveEnemies(Map &myMap);
+	void EnemyManager::MoveEnemies(Map &myMap, Player &myPlayer);
 	EnemyManager(int dif, Map &myMap);
 	~EnemyManager();
 };
